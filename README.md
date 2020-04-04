@@ -9,4 +9,4 @@ contexts. The source code should be fully commented for clarity and all GPIO
 handlers should be robust enough to accept digital inputs from a variety of sensors.
 
 - Sandpiles -
-A mathematical algrorithm that can be modified to create very complex geometry with very minor changes to the input paramaters.
+A mathematical algrorithm that can be modified to create very complex geometry with very minor changes to the input parameters.
