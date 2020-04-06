@@ -11,8 +11,11 @@ handlers should be robust enough to accept digital inputs from a variety of sens
 - Sandpiles -
 A mathematical algrorithm that can be modified to create very complex geometry with very minor changes to the input parameters.
 
+- Java Jellyfish -
+Simple fluid simulation using sine functions
+
 - Math Toys -
 Visualizations for mathematical concepts.
 
--Color Typewriter -
+- Color Typewriter -
 Interface to map inputs to colors.
