@@ -38,7 +38,7 @@ void draw() {
   sunset();
   //beach();
 
-  render();
+  waves();
 
 }
 
@@ -77,7 +77,7 @@ void drawPlane() {
   line(0-width, 0, width, 0);
 }
 
-void render() {
+void waves() {
   directionalLight(50, 0, 126, 500, 0, -1);
   ambientLight( 150, 200, 200);
   for (int y = 20; y < rows - 1; y++) {
