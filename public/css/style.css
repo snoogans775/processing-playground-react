@@ -1,0 +1,11 @@
+body {
+  background: #FFFFFF;
+  float:left;
+}
+
+div {
+	display: inline-block;
+	width: 40%;
+	float: left;
+  
+}

@@ -9,14 +9,14 @@ const happyMountains = ( s ) => {
 	let colorBrightness, mtnColor;
 
 	s.setup = () => {
-	  s.createCanvas(100, 400);
-	  s.colorMode(HSB, 100);
+	  s.createCanvas(200, 400);
+	  s.colorMode(s.HSB, 100);
 	  s.background(0, 70, 80);
   
 	  x = 0;
 	  y = 20;
 	  colorBrightness = 90;
-	  mtnColor = color(60, 60, 30);
+	  mtnColor = s.color(60, 60, 30);
 	}
 
 	s.draw = () => {
@@ -29,12 +29,12 @@ const happyMountains = ( s ) => {
 	  x += 1;
   
 	  //move y up and down
-	  smallChange = noise(millis() * 0.001) - 0.5;
+	  smallChange = s.noise(s.millis() * 0.001) - 0.5;
 	  amplitude = 2;
 	  y += smallChange * amplitude;
   
 	  //starting over when we reach the edge
-	  if ( x > width ) {
+	  if ( x > s.width ) {
 	    x = 0;
     
 	    //do stuff with the new line

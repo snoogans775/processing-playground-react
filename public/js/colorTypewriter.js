@@ -5,10 +5,10 @@
 
 const colorTypewriter = ( s ) => {
 
-	let maxHeight = 40;
-	let minHeight = 40;
+	let maxHeight = 20;
+	let minHeight = 20;
 	let letterHeight = maxHeight; // Height of the letters
-	let letterWidth = 80;          // Width of the letter
+	let letterWidth = 40;          // Width of the letter
 
 	let x = -letterWidth;          // X position of the letters
 	let y = 0;                      // Y position of the letters
@@ -19,7 +19,7 @@ const colorTypewriter = ( s ) => {
 	let keyColor;
 
 	s.setup = () => {
-	  s.createCanvas(400,400);
+	  s.createCanvas(200,400);
 	  s.noStroke();
 	  s.colorMode(s.HSB, 100);
 	  s.background(100);
