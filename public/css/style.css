@@ -1,11 +1,30 @@
 body {
+	font-family: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background: #FFFFFF;
   float:left;
 }
 
-div {
+.sketch {
 	display: inline-block;
-	width: 40%;
+	background: #DDFFDD;
 	float: left;
+	padding: 0.5em;
+	margin: 0.5em;
   
+}
+
+.sketch-thumbnail {
+	width: 100%;
+	min-width: 200px;
+	height: auto;
+}
+
+.sketch-title {
+	width: 100%;
+	font-weight: bold;
+}
+
+.sketch-description {
+	width: 100%;
+	font-size: 0.5em;
 }

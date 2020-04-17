@@ -7,6 +7,8 @@
 	<script src="libraries/p5.min.js"></script>
 <script src="js/colorTypewriter.js"></script>
 <script src="js/happyMountains.js"></script>
+<script src="js/sandpiles.js"></script>
+<script src="js/bubbleBuffer.js"></script>
   <!-- OK, YOU CAN MAKE CHANGES BELOW THIS LINE AGAIN -->
 
   <!-- This line removes any default padding and style.
@@ -15,11 +17,52 @@
 </head>
 
 <body>
-<div id = "colorTypewriterDiv"></div>
-<div id = "happyMountainsDiv"></div>
+
 <script>
-	let sketch1 = new p5( colorTypewriter, 'colorTypewriterDiv' );
-	let sketch2 = new p5( happyMountains, 'happyMountainsDiv' );
+
+	let newSketch = (obj) => {
+		
+		//Create HTML elements
+		let sketch = document.createElement('div');
+		let thumbnail = document.createElement('div');
+		let title = document.createElement('div');
+		let difficulty = document.createElement('div');
+		let description = document.createElement('div');
+
+		//Assign attributes
+		sketch.className = obj.class;
+		sketch.id = obj.id;
+		title.className = 'sketch-title';
+		difficulty.className = 'sketch-difficulty';
+		description.className = 'sketch-description';
+		thumbnail.className = 'sketch-thumbnail';
+		
+		//Insert data
+		title.textContent = obj.title;
+		difficulty.textContent = obj.difficulty;
+		description.textContent = obj.description;
+		
+		
+		sketch.append(title, difficulty, description, thumbnail);
+		
+		return sketch;
+	}
+	
+	let sketch1 = newSketch({
+		id: 'colorTypewriter',
+		title: 'Color Typewriter',
+		difficulty: 'Beginner',
+		description: 'make art with a keyboard'
+	});
+	
+	document.body.append(sketch1);
+
+	let sketch = new p5( colorTypewriter, 'colorTypewriter');
+	//let sketch2 = new p5( happyMountains, 'happyMountains' );
+	//let sketch3 = new p5( sandpiles, 'sandpiles' );
+	//let sketch4 = new p5( bubbleBuffer, 'bubbleBuffer' );
+
 </script>
+
 </body>
 </html>
