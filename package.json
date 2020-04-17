@@ -1,0 +1,25 @@
+{
+  "name": "processing-playground",
+  "version": "1.0.0",
+  "description": "Processing sketches for interactive exhibits",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snoogans775/processing-playground.git"
+  },
+  "author": "Kevin Fredericks",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/snoogans775/processing-playground/issues"
+  },
+  "homepage": "https://github.com/snoogans775/processing-playground#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "helmet": "^3.22.0",
+    "nedb": "^1.8.0",
+    "nodemon": "^2.0.3"
+  }
+}

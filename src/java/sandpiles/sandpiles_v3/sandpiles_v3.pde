@@ -13,14 +13,15 @@ void topple(int maxNum) {
   // the behavior of the sandpiles that topple away.
   // In this program, each pixel is computed as an individual sandpile.
   int[][] nextpiles = new int[width][height]; 
-    for (int x = 0; x < width; x++) {
-      for (int y = 0; y < height; y++) {
-        int num = sandpiles[x][y];
-        if (num < maxNum) {
+  for (int x = 0; x < width; x++) {
+    for (int y = 0; y < height; y++) {
+      int num = sandpiles[x][y];
+      if (num < maxNum) {
         nextpiles[x][y] = sandpiles[x][y];
+      }
     }
-   }
   }
+  
  for (int x = 0; x < width; x++) {
   for (int y = 0; y < height; y++) {
     int num = sandpiles[x][y];
