@@ -33,15 +33,18 @@ const happyMountains = ( s ) => {
 	  amplitude = 2;
 	  y += smallChange * amplitude;
   
-	  //starting over when we reach the edge
+	  //starting over when we reach the edges
 	  if ( x > s.width ) {
 	    x = 0;
-    
-	    //do stuff with the new line
 	    y += 50;
 	    colorBrightness -= 10;
 	  }
+		if ( y > s.height ) {
+			x = 0;
+			y = 0;
+			colorBrightness = 90;
+		}
   
 	}
 
-} //End closure
+} //End of closure

@@ -5,24 +5,38 @@
 
 const colorTypewriter = ( s ) => {
 
-	let maxHeight = 20;
-	let minHeight = 20;
-	let letterHeight = maxHeight; // Height of the letters
-	let letterWidth = 40;          // Width of the letter
+	let maxHeight;
+	let minHeight;
+	let letterHeight;      // Height of the letters
+	let letterWidth;       // Width of the letter
 
-	let x = -letterWidth;          // X position of the letters
-	let y = 0;                      // Y position of the letters
-
-	let newletter = true;              
-
-	//let numChars = 26;      // There are 26 characters in the alphabet
+	let x, y;              // Position of the letters
+	let newletter;
+	
+	let textX, textY;         
 	let keyColor;
 
 	s.setup = () => {
-	  s.createCanvas(200,400);
+	  s.createCanvas(200,200);
 	  s.noStroke();
 	  s.colorMode(s.HSB, 100);
-	  s.background(100);
+	  s.background(80);
+		
+		maxHeight = s.height / 8;
+		minHeight = s.height / 8;
+		letterHeight = maxHeight; 
+		letterWidth = s.width / 4;
+
+		x = -letterWidth;
+		y = 0;
+		newletter = true; 
+		
+		textPosition = [s.width/2, s.height - 30];   
+	  s.textSize(30);
+	  s.textAlign(s.CENTER);
+		textX = s.width/2;
+		textY = s.height - 30;
+		s.text( 'TYPE', textX, textY);
 	};
 
 	s.draw = () => {
@@ -63,4 +77,4 @@ const colorTypewriter = ( s ) => {
 	    y = 0;      // reset y to 0
 	  }
 	};
-}; //End of closurew
+}; //End of closure
