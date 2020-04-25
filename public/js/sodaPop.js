@@ -8,7 +8,7 @@ const sodaPop = ( s ) => {
 
 	s.setup = () => {
 	  s.createCanvas(200,200);
-	  for ( let i=0; i < 400; i++) {
+	  for ( let i=0; i < 100; i++) {
 	    bubbles[i] = new Bubble();
 	  }
 	}
