@@ -9,6 +9,7 @@
 <script src="js/happyMountains.js"></script>
 <script src="js/sandpiles.js"></script>
 <script src="js/bubbleBuffer.js"></script>
+<script src="js/sodaPop.js"></script>
   <!-- OK, YOU CAN MAKE CHANGES BELOW THIS LINE AGAIN -->
 
   <!-- This line removes any default padding and style.
@@ -17,6 +18,7 @@
 </head>
 
 <body>
+	<div id="header">Lessons</div>
 
 <script>
 
@@ -30,37 +32,85 @@
 		let description = document.createElement('div');
 
 		//Assign attributes
-		sketch.className = obj.class;
+		sketch.className = 'sketch';
 		sketch.id = obj.id;
+		thumbnail.className = 'sketch-thumbnail';
+		thumbnail.id = obj.id + '-thumbnail';
 		title.className = 'sketch-title';
 		difficulty.className = 'sketch-difficulty';
 		description.className = 'sketch-description';
-		thumbnail.className = 'sketch-thumbnail';
 		
 		//Insert data
 		title.textContent = obj.title;
 		difficulty.textContent = obj.difficulty;
+		let p5skectch = new p5( obj.p5, obj.id + '-thumbnail');
 		description.textContent = obj.description;
 		
 		
-		sketch.append(title, difficulty, description, thumbnail);
+		sketch.append(title, difficulty, thumbnail, description);
 		
 		return sketch;
 	}
 	
-	let sketch1 = newSketch({
+	let sketches = [];
+	
+	sketches.push( newSketch({
 		id: 'colorTypewriter',
 		title: 'Color Typewriter',
 		difficulty: 'Beginner',
-		description: 'make art with a keyboard'
-	});
+		description: 'Make art with your keyboard',
+		p5: colorTypewriter
+	}));
+	sketches.push( newSketch({
+		id: 'happyMountains',
+		title: 'Happy Mountains',
+		difficulty: 'Beginner',
+		description: 'Make an AI artist',
+		p5: happyMountains
+	}));
+	sketches.push( newSketch({
+		id: 'sandpiles',
+		title: 'Sandpiles',
+		difficulty: 'Challenging',
+		description: 'Code a dynamic system',
+		p5: sandpiles
+	}));
+	sketches.push( newSketch({
+		id: 'bubbleBuffer',
+		title: 'Bubble Buffer',
+		difficulty: 'Beginner',
+		description: 'Visualize a bottleneck',
+		p5: bubbleBuffer
+	}));
+	sketches.push( newSketch({
+		id: 'sodaPop',
+		title: 'Soda Pop',
+		difficulty: 'Challenging',
+		description: 'Make some bubbles',
+		p5: sodaPop
+	}));
 	
-	document.body.append(sketch1);
-
-	let sketch = new p5( colorTypewriter, 'colorTypewriter');
-	//let sketch2 = new p5( happyMountains, 'happyMountains' );
-	//let sketch3 = new p5( sandpiles, 'sandpiles' );
-	//let sketch4 = new p5( bubbleBuffer, 'bubbleBuffer' );
+	for (let i = 0; i < sketches.length; i++) {
+		document.body.append(sketches[i]);
+	}
+	
+	let insertObject = async (obj) => {
+		const timestamp = Date.now();
+		obj.last_update = timestamp;
+		const options = {
+			method: 'POST',
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(obj)
+		};
+		const response = await fetch('/database', options);
+		const json = await response.json();
+		console.log(json);
+	};
+	
+	//insertObject(sketch);
+	
 
 </script>
 

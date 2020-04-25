@@ -9,7 +9,7 @@ const happyMountains = ( s ) => {
 	let colorBrightness, mtnColor;
 
 	s.setup = () => {
-	  s.createCanvas(200, 400);
+	  s.createCanvas(200, 200);
 	  s.colorMode(s.HSB, 100);
 	  s.background(0, 70, 80);
   

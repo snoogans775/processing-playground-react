@@ -13,7 +13,7 @@ const sandpiles = (s) => {
 	let smallChange;
 
 	s.setup = () => {
-	  s.createCanvas(200, 400);
+	  s.createCanvas(200, 200);
 	  s.colorMode(s.HSB, colorRange);
 	  s.noStroke();
 	  s.frameRate(6);

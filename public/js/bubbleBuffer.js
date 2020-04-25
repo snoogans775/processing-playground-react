@@ -9,7 +9,7 @@ const bubbleBuffer = ( s ) => {
 	let toggle = -1;
 
 	s.setup = () => {
-	  s.createCanvas(200, 400);
+	  s.createCanvas(200, 200);
 	  s.colorMode(s.HSB, 100);
 	  s.textSize(30);
 	  s.textAlign(s.CENTER);
