@@ -1,118 +1,43 @@
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="processing is a java-based programming language"
+      content="Processing sketches for educational use"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
 
-  <!-- PLEASE NO CHANGES BELOW THIS LINE (UNTIL I SAY SO) -->
-	<script src="libraries/p5.min.js"></script>
-<script src="js/colorTypewriter.js"></script>
-<script src="js/happyMountains.js"></script>
-<script src="js/sandpiles.js"></script>
-<script src="js/bubbleBuffer.js"></script>
-<script src="js/sodaPop.js"></script>
-  <!-- OK, YOU CAN MAKE CHANGES BELOW THIS LINE AGAIN -->
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Processing Playground</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
 
-  <!-- This line removes any default padding and style.
-       You might only need one of these values set. -->
-  <link rel="stylesheet" href="css/style.css" type="text/css">
-</head>
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
 
-<body>
-	<div id="header">Lessons</div>
-
-<script>
-
-	let newSketch = (obj) => {
-		
-		//Create HTML elements
-		let sketch = document.createElement('div');
-		let thumbnail = document.createElement('div');
-		let title = document.createElement('div');
-		let difficulty = document.createElement('div');
-		let description = document.createElement('div');
-
-		//Assign attributes
-		sketch.className = 'sketch';
-		sketch.id = obj.id;
-		thumbnail.className = 'sketch-thumbnail';
-		thumbnail.id = obj.id + '-thumbnail';
-		title.className = 'sketch-title';
-		difficulty.className = 'sketch-difficulty';
-		description.className = 'sketch-description';
-		
-		//Insert data
-		title.textContent = obj.title;
-		difficulty.textContent = obj.difficulty;
-		let p5skectch = new p5( obj.p5, obj.id + '-thumbnail');
-		description.textContent = obj.description;
-		
-		
-		sketch.append(title, difficulty, thumbnail, description);
-		
-		return sketch;
-	}
-	
-	let sketches = [];
-	
-	sketches.push( newSketch({
-		id: 'colorTypewriter',
-		title: 'Color Typewriter',
-		difficulty: 'Beginner',
-		description: 'Make art with your keyboard',
-		p5: colorTypewriter
-	}));
-	sketches.push( newSketch({
-		id: 'happyMountains',
-		title: 'Happy Mountains',
-		difficulty: 'Beginner',
-		description: 'Make an AI artist',
-		p5: happyMountains
-	}));
-	sketches.push( newSketch({
-		id: 'sandpiles',
-		title: 'Sandpiles',
-		difficulty: 'Challenging',
-		description: 'Code a dynamic system',
-		p5: sandpiles
-	}));
-	sketches.push( newSketch({
-		id: 'bubbleBuffer',
-		title: 'Bubble Buffer',
-		difficulty: 'Beginner',
-		description: 'Visualize a bottleneck',
-		p5: bubbleBuffer
-	}));
-	sketches.push( newSketch({
-		id: 'sodaPop',
-		title: 'Soda Pop',
-		difficulty: 'Challenging',
-		description: 'Make some bubbles',
-		p5: sodaPop
-	}));
-	
-	for (let i = 0; i < sketches.length; i++) {
-		document.body.append(sketches[i]);
-	}
-	
-	let insertObject = async (obj) => {
-		const timestamp = Date.now();
-		obj.last_update = timestamp;
-		const options = {
-			method: 'POST',
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify(obj)
-		};
-		const response = await fetch('/database', options);
-		const json = await response.json();
-		console.log(json);
-	};
-	
-	//insertObject(sketch);
-	
-
-</script>
-
-</body>
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
 </html>
