@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
 import Gallery from './Gallery';
+import sketches from './sketches';
 import './App.css';
 
 class App extends React.Component {
@@ -11,7 +11,9 @@ class App extends React.Component {
 	  return (
 	    <div className="App">
 	      <header className="App-header">
-	        <Gallery />
+	        <Gallery 
+						sketches = {sketches}
+					/>
 	      </header>
 	    </div>
 	  );
