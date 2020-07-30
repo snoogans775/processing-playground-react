@@ -2,7 +2,6 @@
 //Refactored for P5.js by Kevin Fredericks
 //Color Typewriter concept by John Maeda
 //Example code taken from processing.org
-
 const colorTypewriter = ( s ) => {
 
 	let metadata = {
@@ -12,6 +11,7 @@ const colorTypewriter = ( s ) => {
 		description: 'Make art with your keyboard',
 		tags: 'interactive, visual art'
 	}
+	
 	let maxHeight;
 	let minHeight;
 	let letterHeight;      // Height of the letters
@@ -93,14 +93,6 @@ const colorTypewriter = ( s ) => {
 //Example code taken from processing.org
 
 const sandpiles = (s) => {
-
-	let metadata = {
-		id: 'sandpiles',
-		title: 'Sandpiles',
-		difficulty: 'Challenging',
-		description: 'Code a dynamic system',
-		tags: 'animation, algorithms, visual art'
-	}
 	
 	let sandpiles = [];
 	let nextpiles = [];
@@ -110,7 +102,7 @@ const sandpiles = (s) => {
 	let smallChange;
 
 	s.setup = () => {
-	  s.createCanvas(200, 400);
+	  s.createCanvas(200, 200);
 	  s.colorMode(s.HSB, colorRange);
 	  s.noStroke();
 	  s.frameRate(6);
@@ -186,21 +178,13 @@ const sandpiles = (s) => {
 //License MIT
 
 const happyMountains = ( s ) => {
-
-	let metadata = {
-		id: 'happyMountains',
-		title: 'Happy Mountains',
-		difficulty: 'Beginner',
-		description: 'Make an AI artist',
-		tags: ['visual art, generative']
-	}
 	let x, y;
 	let smallChange;
 	let colorBrightness, mtnColor;
 	let amplitude;
 
 	s.setup = () => {
-	  s.createCanvas(200, 400);
+	  s.createCanvas(200, 200);
 	  s.colorMode(s.HSB, 100);
 	  s.background(0, 70, 80);
   
@@ -245,14 +229,6 @@ const happyMountains = ( s ) => {
 //License MIT
 
 const bubbleBuffer = ( s ) => {
-
-	let metadata = {
-		id: 'bubbleBuffer',
-		title: 'Bubble Buffer',
-		difficulty: 'Beginner',
-		description: 'Visualize a bottleneck',
-		tags: ['algorithms, animation, interactive']
-	}
 
 	let data = [];
 	let textPosition = [];
@@ -299,5 +275,50 @@ const bubbleBuffer = ( s ) => {
 	}
 } //End of closure
 
-let sketches = [colorTypewriter, sandpiles, happyMountains, bubbleBuffer];
+const colorTypewriterObj = {
+	metadata : {
+		id: 'colorTypewriter',
+		title: 'Color Typewriter',
+		difficulty: 'Beginner',
+		description: 'Make art with your keyboard',
+		tags: 'interactive, visual art'
+	},
+	
+	sketch: colorTypewriter
+}
+const happyMountainsObj = {
+	metadata: {
+		id: 'happyMountains',
+		title: 'Happy Mountains',
+		difficulty: 'Beginner',
+		description: 'Make an AI artist',
+		tags: ['visual art, generative']
+	},
+	
+	sketch: happyMountains
+}
+const sandpilesObj = {
+	metadata: {
+		id: 'sandpiles',
+		title: 'Sandpiles',
+		difficulty: 'Challenging',
+		description: 'Code a dynamic system',
+		tags: 'animation, algorithms, visual art'
+	},
+	
+	sketch: sandpiles
+}
+const bubbleBufferObj = {
+	metadata: {
+		id: 'bubbleBuffer',
+		title: 'Bubble Buffer',
+		difficulty: 'Beginner',
+		description: 'Visualize a bottleneck',
+		tags: ['algorithms, animation, interactive']
+	}
+	,
+	
+	sketch: bubbleBuffer
+}
+let sketches = [colorTypewriterObj, sandpilesObj, happyMountainsObj, bubbleBufferObj];
 export default sketches;

@@ -11,6 +11,19 @@ function Gallery(props)  {
 	)
 }
 
+function Card(props) {
+	const obj = props.sketch;
+	console.log(props.sketch)
+	
+	return (
+		<div className="card">
+			<div className="thumbnail-container">
+				<Sketch source={props.sketch} />
+			</div>
+		</div>
+	)
+}
+
 class Sketch extends React.Component {
 	constructor(props) {
 		super(props)
@@ -18,7 +31,7 @@ class Sketch extends React.Component {
 	}
 
 	componentDidMount() {
-		this.myP5 = new p5 (this.sketch, this.myRef.current)
+		this.myP5 = new p5 (this.sketch.sketch, this.myRef.current)
 	}
 	
 	sketch = this.props.source
@@ -26,20 +39,6 @@ class Sketch extends React.Component {
 	render() {
 		return (
 			<div className="sketch" ref={this.myRef}>
-			</div>
-		)
-	}
-}
-
-class Card extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-
-	render() {
-		return(
-			<div className="card">
-				<Sketch source={this.props.sketch} />
 			</div>
 		)
 	}
