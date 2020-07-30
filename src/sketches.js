@@ -5,6 +5,13 @@
 
 const colorTypewriter = ( s ) => {
 
+	let metadata = {
+		id: 'colorTypewriter',
+		title: 'Color Typewriter',
+		difficulty: 'Beginner',
+		description: 'Make art with your keyboard',
+		tags: 'interactive, visual art'
+	}
 	let maxHeight;
 	let minHeight;
 	let letterHeight;      // Height of the letters
@@ -13,7 +20,8 @@ const colorTypewriter = ( s ) => {
 	let x, y;              // Position of the letters
 	let newletter;
 	
-	let textX, textY;         
+	let textX, textY;
+	let textPosition;
 	let keyColor;
 
 	s.setup = () => {
@@ -86,6 +94,14 @@ const colorTypewriter = ( s ) => {
 
 const sandpiles = (s) => {
 
+	let metadata = {
+		id: 'sandpiles',
+		title: 'Sandpiles',
+		difficulty: 'Challenging',
+		description: 'Code a dynamic system',
+		tags: 'animation, algorithms, visual art'
+	}
+	
 	let sandpiles = [];
 	let nextpiles = [];
 	let maxHeight = 3;
@@ -171,9 +187,17 @@ const sandpiles = (s) => {
 
 const happyMountains = ( s ) => {
 
+	let metadata = {
+		id: 'happyMountains',
+		title: 'Happy Mountains',
+		difficulty: 'Beginner',
+		description: 'Make an AI artist',
+		tags: ['visual art, generative']
+	}
 	let x, y;
 	let smallChange;
 	let colorBrightness, mtnColor;
+	let amplitude;
 
 	s.setup = () => {
 	  s.createCanvas(200, 400);
@@ -222,12 +246,20 @@ const happyMountains = ( s ) => {
 
 const bubbleBuffer = ( s ) => {
 
+	let metadata = {
+		id: 'bubbleBuffer',
+		title: 'Bubble Buffer',
+		difficulty: 'Beginner',
+		description: 'Visualize a bottleneck',
+		tags: ['algorithms, animation, interactive']
+	}
+
 	let data = [];
 	let textPosition = [];
 	let toggle = -1;
 
 	s.setup = () => {
-	  s.createCanvas(200, 400);
+	  s.createCanvas(200, 200);
 	  s.colorMode(s.HSB, 100);
 	  s.textSize(30);
 	  s.textAlign(s.CENTER);
@@ -266,3 +298,6 @@ const bubbleBuffer = ( s ) => {
 	  toggle = -toggle;
 	}
 } //End of closure
+
+let sketches = [colorTypewriter, sandpiles, happyMountains, bubbleBuffer];
+export default sketches;
