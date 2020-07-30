@@ -1,36 +1,38 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: block;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+	background-color: #282c34;
+	text-align: left;
+	color: white;
 }
 
 .Gallery {
 	background: #DDDDDD;
-	width: 50%;
-	height: 50%;
 }
 
 .Card {
-	display: block;
-	float: left;
+	background: #282c34;
+	display: flex;
+	width: 20%;
+	margin: 0 auto 20px auto;
+	padding: 20px;
+	border-left: 1px #BBBBBB solid;
+	border-bottom: 1px #BBBBBB solid;
+	
 }
+
+.metadata .title{
+	font-weight: bold;
+	font-size: calc(10px + 5vmin);
+	margin: 5px 0 5px 0;
+}
+
+.metadata .description{
+	color: #BBBBBB;
+	font-size: calc(10px + 1vmin);
+	margin: 0 0 10px 0;
+}
+
+.metadata .difficulty{
+	text-align: right;
+}
+
+
