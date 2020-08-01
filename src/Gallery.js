@@ -6,22 +6,58 @@ import './App.css';
 function Gallery(props)  {
 	const sketches = props.sketches
 	
+	const onClick = () => console.log('clicked!');
+	
+	return sketches.map( (s, index) => <Card key={index} sketch={s} onClick={onClick}/>)
+}
+
+class Card extends React.Component {
+	
+	constructor(props) {
+		super(props);
+		this.state = {
+			metadata: props.sketch.metadata,
+			verbose: false,
+			sketch: props.sketch
+		}
+	}
+	
+	render() {
+		return (
+			<div className="Card" onClick = {this.state.onClick}>
+				<div className="thumbnail-container">
+					<Sketch source={this.state.sketch} />
+					<Metadata content={this.state.metadata} />
+				
+				</div>
+			</div>
+		)
+	}
+}
+
+function Metadata(props) {
+	const content = props.content;
+	
+	let renderTags = (tags) => {
+		return tags.map( tag => <p>{tag}</p>)
+	}
+	
 	return (
-		sketches.map( (sketch, index) => <Card key={index} sketch={sketch}/>)
+		<div className="metadata">
+			<p className="title">{content.title}</p>
+			<p className="description">{content.description}</p>
+			<div className="difficulty">{content.difficulty}</div>
+		</div>
 	)
 }
 
-function Card(props) {
-	const obj = props.sketch;
-	console.log(props.sketch)
-	
-	return (
-		<div className="card">
-			<div className="thumbnail-container">
-				<Sketch source={props.sketch} />
-			</div>
-		</div>
-	)
+class Description extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			visible: true
+		}
+	}
 }
 
 class Sketch extends React.Component {
@@ -31,7 +67,7 @@ class Sketch extends React.Component {
 	}
 
 	componentDidMount() {
-		this.myP5 = new p5 (this.sketch.sketch, this.myRef.current)
+		this.myP5 = new p5 (this.sketch.p5, this.myRef.current)
 	}
 	
 	sketch = this.props.source
