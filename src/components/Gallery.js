@@ -1,6 +1,5 @@
 import React from 'react';
 import p5 from 'p5';
-import './App.css';
 
 
 function Gallery(props)  {
@@ -37,10 +36,6 @@ class Card extends React.Component {
 
 function Metadata(props) {
 	const content = props.content;
-	
-	let renderTags = (tags) => {
-		return tags.map( tag => <p>{tag}</p>)
-	}
 	
 	return (
 		<div className="metadata">
