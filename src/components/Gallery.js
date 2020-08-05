@@ -1,13 +1,18 @@
 import React from 'react';
 import p5 from 'p5';
+import VizSensor from 'react-visibility-sensor';
 
 
 function Gallery(props)  {
-	const sketches = props.sketches
+	const sketches = props.sketches;
 	
-	const onClick = () => console.log('clicked!');
-	
-	return sketches.map( (s, index) => <Card key={index} sketch={s} onClick={onClick}/>)
+	return (
+		<div className="Gallery">
+		{sketches.map((s, index) => (
+			<Card key={index} sketch={s} onClick={()=> window.prompt()}/>
+		))}
+		</div>
+	)
 }
 
 class Card extends React.Component {
@@ -17,7 +22,8 @@ class Card extends React.Component {
 		this.state = {
 			metadata: props.sketch.metadata,
 			verbose: false,
-			sketch: props.sketch
+			sketch: props.sketch,
+			sketchText: String(props.sketch.p5)
 		}
 	}
 	
@@ -29,6 +35,10 @@ class Card extends React.Component {
 					<Metadata content={this.state.metadata} />
 				
 				</div>
+				<div className="description-container">
+					<SourceCode plaintext={this.state.sketchText} />
+				</div>
+				
 			</div>
 		)
 	}
@@ -46,12 +56,26 @@ function Metadata(props) {
 	)
 }
 
-class Description extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			visible: true
-		}
+class SourceCode extends React.Component {
+	state = {
+		visible: false
+	}
+	render() {
+		return(
+			<VizSensor
+				onChange={(isVisible) => {
+					this.setState({visible: isVisible})
+				}}
+			>
+				<p 
+					className="SourceCode"
+					style={{
+						transition: 'opacity 500ms linear',
+						opacity: this.state.visible ? 1 : 0
+					}}
+				>{this.props.plaintext}</p>
+			</VizSensor>
+		);
 	}
 }
 

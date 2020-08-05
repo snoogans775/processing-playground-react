@@ -1,21 +1,46 @@
 .App {
+	font-family: Helvetica Neue;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, 1fr);
+	grid-gap: 0.5em;
 	background-color: #282c34;
-	text-align: left;
+	margin: 0 auto;
+	max-width: 56em;
 	color: white;
+	padding: 0.4em;
 }
 
-.Gallery {
-	background: #DDDDDD;
+.NavBar {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(40px, 80px)) 0.4fr;
+	grid-gap: 0.5em;
+	padding: 0.5em;
 }
 
 .Card {
 	background: #282c34;
-	display: flex;
-	width: 20%;
-	margin: 0 auto 20px auto;
-	padding: 20px;
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0.5fr, 1fr));
 	border-left: 1px #BBBBBB solid;
 	border-bottom: 1px #BBBBBB solid;
+	padding: 0.4em;	
+}
+
+.SourceCode {
+	background: #583c44;
+	height: 100px;
+	max-width: 75%;
+	font-size: calc(3vmin);
+	overflow: scroll;
+	text-overflow: clip;
+	white-space: pre-wrap;
+	padding: 0.2em;
+}
+
+.thumbnail-container {
+}
+
+.description-container {
 	
 }
 
@@ -32,7 +57,5 @@
 }
 
 .metadata .difficulty{
-	text-align: right;
+	text-align: left;
 }
-
-

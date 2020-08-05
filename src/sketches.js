@@ -3,15 +3,6 @@
 //Color Typewriter concept by John Maeda
 //Example code taken from processing.org
 const colorTypewriter = ( s ) => {
-
-	let metadata = {
-		id: 'colorTypewriter',
-		title: 'Color Typewriter',
-		difficulty: 'Beginner',
-		description: 'Make art with your keyboard',
-		tags: 'interactive, visual art'
-	}
-	
 	let maxHeight;
 	let minHeight;
 	let letterHeight;      // Height of the letters
@@ -93,7 +84,6 @@ const colorTypewriter = ( s ) => {
 //Example code taken from processing.org
 
 const sandpiles = (s) => {
-	
 	let sandpiles = [];
 	let nextpiles = [];
 	let maxHeight = 3;
@@ -229,7 +219,6 @@ const happyMountains = ( s ) => {
 //License MIT
 
 const bubbleBuffer = ( s ) => {
-
 	let data = [];
 	let textPosition = [];
 	let toggle = -1;
@@ -280,7 +269,6 @@ const bubbleBuffer = ( s ) => {
 //License MIT 
 
 const sodaPop = ( s ) => {
-	
 	let bubbles = [];
 
 	s.setup = () => {
@@ -410,5 +398,5 @@ const sodaPopObj = {
 	p5: sodaPop
 }
 
-let sketches = [colorTypewriterObj, sandpilesObj, happyMountainsObj, bubbleBufferObj, sodaPopObj];
+let sketches = [sandpilesObj, happyMountainsObj, bubbleBufferObj, sodaPopObj, colorTypewriterObj];
 export default sketches;
