@@ -6,8 +6,7 @@ class Header extends React.Component {
         super(props);
         this.state = {
             title: props.title,
-            fields: ['About', 'Contact'],
-            selection: props.selection
+
         }
     }
 

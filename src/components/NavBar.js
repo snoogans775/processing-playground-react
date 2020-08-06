@@ -1,23 +1,40 @@
 import React, {useState} from 'react'
 
-function NavBar(props) {
-    const fields = props.fields;
-    return (
-        <div className="NavBar">
-            {fields.map((field, index) => (
-                <NavButton key={index} title={field} />
-            ))}
-        </div>
-    )
+class NavBar extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            fields: props.fields,
+            selection: null,
+            onClick: props.onClick
+        }
+    }
+
+    handleClick(field) {
+        this.setState({selection: field});
+    }
+
+    render() {
+        return (
+            <div className="NavBar">
+                <NavButton 
+                    title='About'
+                    onClick={() => this.handleClick('About')}
+                />
+                <NavButton
+                    title='Contact'
+                    onClick={() => this.handleClick('Contact')}
+                />
+            </div>
+        )
+    }
 }
 
 function NavButton(props) {
-    const [selected, setSelection] = useState(false);
-    
      return (
         <div 
             className="NavButton"
-            onClick={() => setSelection(() => setSelection(true))}
+            onClick={props.onClick}
         >
             {props.title}
         </div>
