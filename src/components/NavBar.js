@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function Navbar(props) {
+function NavBar(props) {
     const fields = props.fields;
     return (
         <div className="NavBar">
@@ -12,11 +12,12 @@ function Navbar(props) {
 }
 
 function NavButton(props) {
-    const [selection, setSelection] = useState(null);
+    const [selected, setSelection] = useState(false);
+    
      return (
         <div 
             className="NavButton"
-            onClick={() => setSelection(alert(props.title))}
+            onClick={() => setSelection(() => setSelection(true))}
         >
             {props.title}
         </div>
@@ -27,4 +28,4 @@ function DropDown(props) {
     return <div className="DropDown">{props.textContent}</div>
 }
 
-export default Navbar;
+export default NavBar;

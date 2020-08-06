@@ -6,17 +6,22 @@ class Header extends React.Component {
         super(props);
         this.state = {
             title: props.title,
-            selection: null
+            fields: ['About', 'Contact'],
+            selection: props.selection
         }
     }
 
-    handleClick(navButton) {
-        this.setState({selection: navButton});
+    handleClick(currentSelection) {
+        this.setState({selection: currentSelection});
     }
     render() {
         return (
             <div className="Header">
                 <h1>{this.state.title}</h1>
+                <NavBar 
+                    onClick={() => this.handleClick(this.state.selection)}
+                    fields={this.state.fields}
+                />
             </div>
         )
     }
