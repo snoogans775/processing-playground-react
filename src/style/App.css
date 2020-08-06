@@ -1,9 +1,12 @@
+body {
+	background-color: #282c34;
+}
+
 .App {
 	font-family: Helvetica Neue;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, 1fr);
 	grid-gap: 0.5em;
-	background-color: #282c34;
 	margin: 0 auto;
 	max-width: 56em;
 	color: white;
