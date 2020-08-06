@@ -5,20 +5,30 @@ class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            title: props.title,
+            title: "Processing Playground",
+            subtitle: null,
+            toggleSubtitle: false
 
         }
     }
 
-    handleClick(currentSelection) {
-        this.setState({selection: currentSelection});
+    handleClick(msg) {
+        this.state.toggleSubtitle = !this.state.toggleSubtitle;
+        if (this.state.toggleSubtitle) {
+            this.setState({subtitle: msg});
+        }
+        else {
+            this.setState({subtitle: null});
+        }
+        console.log('i hear you');
     }
     render() {
         return (
             <div className="Header">
-                <h1>{this.state.title}</h1>
+                <div id="title">{this.state.title}</div>
+                <div id="subtitle">{this.state.subtitle}</div>
                 <NavBar 
-                    onClick={() => this.handleClick(this.state.selection)}
+                    onClick={field => this.handleClick(field)}
                     fields={this.state.fields}
                 />
             </div>

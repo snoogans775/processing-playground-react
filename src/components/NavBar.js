@@ -1,33 +1,14 @@
-import React, {useState} from 'react'
+import React from 'react';
 
-class NavBar extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            fields: props.fields,
-            selection: null,
-            onClick: props.onClick
-        }
-    }
-
-    handleClick(field) {
-        this.setState({selection: field});
-    }
-
-    render() {
-        return (
-            <div className="NavBar">
-                <NavButton 
-                    title='About'
-                    onClick={() => this.handleClick('About')}
-                />
-                <NavButton
-                    title='Contact'
-                    onClick={() => this.handleClick('Contact')}
-                />
-            </div>
-        )
-    }
+function NavBar(props) {
+    return (
+        <div className="NavBar">
+            <NavButton 
+                title='About'
+                onClick={() => props.onClick('A collection of p5.js sketches')}
+            />
+        </div>
+    )
 }
 
 function NavButton(props) {
@@ -41,8 +22,12 @@ function NavButton(props) {
      )
 }
 
-function DropDown(props) {
-    return <div className="DropDown">{props.textContent}</div>
+function SocialLinks(props) {
+    return (
+        <div className="SocialLinks">
+
+        </div>
+    )
 }
 
 export default NavBar;

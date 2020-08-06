@@ -7,7 +7,7 @@ import './style/App.css';
 function App(props) {
   return (
     <div className="App">
-      <Header title="Processing Playground" />
+      <Header />
       <Gallery 
         sketches = {sketches}
       />
