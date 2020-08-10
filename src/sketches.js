@@ -5,15 +5,13 @@
 const colorTypewriter = ( s ) => {
 	let maxHeight;
 	let minHeight;
-	let letterHeight;      // Height of the letters
-	let letterWidth;       // Width of the letter
+	let letterHeight;
+	let letterWidth;
 
-	let x, y;              // Position of the letters
+	let x, y;
 	let newletter;
 	
 	let textX, textY;
-	let textPosition;
-	let keyColor;
 
 	s.setup = () => {
 	  s.createCanvas(200,200);
@@ -29,8 +27,7 @@ const colorTypewriter = ( s ) => {
 		x = -letterWidth;
 		y = 0;
 		newletter = true; 
-		
-		textPosition = [s.width/2, s.height - 30];   
+		  
 	  s.textSize(30);
 	  s.textAlign(s.CENTER);
 		textX = s.width/2;
@@ -40,19 +37,19 @@ const colorTypewriter = ( s ) => {
 
 	s.draw = () => {
 	  if (newletter == true) {
-	    // Draw the "letter"
-	    let y_pos;
-	    if (letterHeight == maxHeight) {
-	      y_pos = y;
-	      s.rect( x, y_pos, letterWidth, letterHeight );
-	    } else {
-	      y_pos = y + minHeight;
-	      s.rect( x, y_pos, letterWidth, letterHeight );
-	      //fill(numChars/2);
-	      s.rect( x, y_pos-minHeight, letterWidth, letterHeight );
-	    }
-	    newletter = false;
-	  };
+		// Draw the "letter"
+		let y_pos;
+		if (letterHeight == maxHeight) {
+		  y_pos = y;
+		  s.rect( x, y_pos, letterWidth, letterHeight );
+		} else {
+		  y_pos = y + minHeight;
+		  s.rect( x, y_pos, letterWidth, letterHeight );
+		  //fill(numChars/2);
+		  s.rect( x, y_pos-minHeight, letterWidth, letterHeight );
+		}
+		newletter = false;
+	  }
 	};
 
 	s.keyPressed = () => {
@@ -67,13 +64,13 @@ const colorTypewriter = ( s ) => {
 
 	  // Wrap horizontally
 	  if (x > s.width - letterWidth) {
-	    x = 0;
-	    y+= maxHeight;
+		x = 0;
+		y+= maxHeight;
 	  }
 
 	  // Wrap vertically
 	  if( y > s.height - letterHeight) {
-	    y = 0;      // reset y to 0
+		y = 0;      // reset y to 0
 	  }
 	};
 }; //End of closure
@@ -105,12 +102,12 @@ const sandpiles = (s) => {
   
 	  //Populate sandpiles
 	  for ( let x = 0; x < w; x++ ) {
-	    sandpiles[x] = [];
-	    nextpiles[x] = [];
-	    for ( let y = 0; y < h; y++ ) { 
-	      sandpiles[x][y] = 0;
-	      nextpiles[x][y] = 0;
-	    }
+		sandpiles[x] = [];
+		nextpiles[x] = [];
+		for ( let y = 0; y < h; y++ ) { 
+		  sandpiles[x][y] = 0;
+		  nextpiles[x][y] = 0;
+		}
 	  }
 	  //Create initial sandpiles
 	  sandpiles[w/2][h/2] = 1000000;
@@ -118,28 +115,28 @@ const sandpiles = (s) => {
 
 	s.topple = (speed, maxHeight) => {
 	  for ( let i = 0; i < speed; i++ ) {
-	    // BEGIN UPDATE
-	    for ( let x = 0; x < w; x++) {
-	      for ( let y = 0; y < h; y++) {
-	        nextpiles[x][y] = sandpiles[x][y];
-	      }
-	    }
-	    for ( let x = 0; x < w; x++) {
-	      for ( let y = 0; y < h; y++) { 
-	        let num = sandpiles[x][y];
-	        if ( num >= maxHeight ) {
-	          nextpiles[x][y] -= 6;
-	          if ( x + 1 < w ) nextpiles[x+1][y]++;
-	          if ( x - 1 > 0 ) nextpiles[x-1][y]++;
-	          if ( y + 1 < h ) nextpiles[x][y+1]+=2;
-	          if ( y - 1 > 0 ) nextpiles[x][y-1]+=2;
-	        }
-	      }
-	    }
-    
-	    let tmp = sandpiles;
-	    sandpiles = nextpiles;
-	    nextpiles = tmp;
+		// BEGIN UPDATE
+		for ( let x = 0; x < w; x++) {
+		  for ( let y = 0; y < h; y++) {
+			nextpiles[x][y] = sandpiles[x][y];
+		  }
+		}
+		for ( let x = 0; x < w; x++) {
+		  for ( let y = 0; y < h; y++) { 
+			let num = sandpiles[x][y];
+			if ( num >= maxHeight ) {
+			  nextpiles[x][y] -= 6;
+			  if ( x + 1 < w ) nextpiles[x+1][y]++;
+			  if ( x - 1 > 0 ) nextpiles[x-1][y]++;
+			  if ( y + 1 < h ) nextpiles[x][y+1]+=2;
+			  if ( y - 1 > 0 ) nextpiles[x][y-1]+=2;
+			}
+		  }
+		}
+	
+		let tmp = sandpiles;
+		sandpiles = nextpiles;
+		nextpiles = tmp;
 	  }
 	}
 
@@ -148,17 +145,17 @@ const sandpiles = (s) => {
   
 	  //Draw boxes
 	  for ( let x = 0; x < w; x++) {
-	    for ( let y = 0; y < h; y++) {
-      
-	      let bright = sandpiles[x][y] * 2.5;
-	      let smallChange = s.sin( s.millis() * 0.00001);
-	      smallChange = s.map(smallChange, -1, 1, 0, colorRange);
-	      let xSize = x * xScl;
-	      let ySize = y * yScl;
-      
-	      s.fill(smallChange, 100, bright);
-	      s.rect(xSize, ySize, 10, 10);
-	    }
+		for ( let y = 0; y < h; y++) {
+	  
+		  let bright = sandpiles[x][y] * 2.5;
+		  let smallChange = s.sin( s.millis() * 0.00001);
+		  smallChange = s.map(smallChange, -1, 1, 0, colorRange);
+		  let xSize = x * xScl;
+		  let ySize = y * yScl;
+	  
+		  s.fill(smallChange, 100, bright);
+		  s.rect(xSize, ySize, 10, 10);
+		}
 	  }
 	}
 } //End of closure
@@ -170,7 +167,7 @@ const sandpiles = (s) => {
 const happyMountains = ( s ) => {
 	let x, y;
 	let smallChange;
-	let colorBrightness, mtnColor;
+	let colorBrightness;
 	let amplitude;
 
 	s.setup = () => {
@@ -181,7 +178,6 @@ const happyMountains = ( s ) => {
 	  x = 0;
 	  y = 20;
 	  colorBrightness = 90;
-	  mtnColor = s.color(60, 60, 30);
 	}
 
 	s.draw = () => {
@@ -200,9 +196,9 @@ const happyMountains = ( s ) => {
   
 	  //starting over when we reach the edges
 	  if ( x > s.width ) {
-	    x = 0;
-	    y += 50;
-	    colorBrightness -= 10;
+		x = 0;
+		y += 50;
+		colorBrightness -= 10;
 	  }
 		if ( y > s.height ) {
 			x = 0;
@@ -241,16 +237,16 @@ const bubbleBuffer = ( s ) => {
   
 	  //Update
 	  for( let i = 0; i < data.length - 1; i++ ) {
-	    if ( data[i] > data[i+1] ) {
-	      let temp = data[i];
-	      data[i] = data[i+1];
-	      data[i+1] = temp;
-	    }
+		if ( data[i] > data[i+1] ) {
+		  let temp = data[i];
+		  data[i] = data[i+1];
+		  data[i+1] = temp;
+		}
 	  }
   
 	  //Render
 	  for( let i = 0; i < data.length - 1; i++ ) {
-	    s.line(i, s.height, i+1, data[i]);
+		s.line(i, s.height, i+1, data[i]);
 	  }
 	  s.text( 'CLICK', textPosition[0], textPosition[1] );
   
@@ -274,69 +270,146 @@ const sodaPop = ( s ) => {
 	s.setup = () => {
 	  s.createCanvas(200,200);
 	  for ( let i=0; i < 100; i++) {
-	    bubbles[i] = new Bubble();
+		bubbles[i] = new Bubble();
 	  }
 	}
 
 	s.draw = () => {
 	  s.background(255);
 	  for ( let i = 0; i < bubbles.length; i++) {
-	    bubbles[i].run();
+		bubbles[i].run();
 	  }
 	}
 
 	class Bubble {
-	   constructor () {    
-	    this.seed = s.random(0, 0.1);
+		constructor () {    
+			this.seed = s.random(0, 0.1);
 			
-	    this.x = s.ceil( s.random( s.width ) );
-	    this.y = s.ceil( s.random( s.height ) );
-	    this.z = s.ceil( s.random(1, 5) ); 
-    
-	    this.yVelocity = s.ceil( s.random(-3, -1));
-	    this.xVelocity = 0;
+			this.x = s.ceil( s.random( s.width ) );
+			this.y = s.ceil( s.random( s.height ) );
+			this.z = s.ceil( s.random(1, 5) ); 
+		
+			this.yVelocity = s.ceil( s.random(-3, -1));
+			this.xVelocity = 0;
 
-	    this.PURPLE = s.color(138, 43, 226);
-	  }
+			this.PURPLE = s.color(138, 43, 226);
+		}
+	
+	  	update() {
+			this.float();
+	  	}
 
-	  update() {
-	    this.float();
-	  }
-  
-	  pop() {
-	    // Randomly pop bubbles if they reach the top
-	    if ( s.ceil( this.x )  == s.millis() % s.width ) {
-	      this.y = s.height;
-	    }
-	  }
-  
-	  float() {
-	    this.xVelocity = s.noise( s.frameCount * this.seed );
-	    this.x += s.map(this.xVelocity, 0, 1, -0.1, 0.1);
-    
-	    if ( this.y > this.z ) {
-	      this.y += this.yVelocity;
-	    } else {
-	      this.y = this.z; // This makes the bubble stop
-	      this.pop();
-	    }
-	  }
+	  	pop() {
+			// Randomly pop bubbles if they reach the top
+			if ( s.ceil( this.x )  == s.millis() % s.width ) {
+			this.y = s.height;
+			}
+	  	}
 
-	  render() {
-	    s.stroke(this.PURPLE);
-	    s.ellipse(
-	      this.x, 
-	      this.y, 
-	      this.z, 
-	      this.z
-	    );
-	  }
+		float() {
+			this.xVelocity = s.noise( s.frameCount * this.seed );
+			this.x += s.map(this.xVelocity, 0, 1, -0.1, 0.1);
+		
+			if ( this.y > this.z ) {
+			this.y += this.yVelocity;
+			} else {
+			this.y = this.z; // This makes the bubble stop
+			this.pop();
+			}
+		}
+	
+		render() {
+			s.stroke(this.PURPLE);
+			s.ellipse(
+			this.x, 
+			this.y, 
+			this.z, 
+			this.z
+			);
+		}
 
-	  run() {
-	    this.update();
-	    this.render();
-	  }
+		run() {
+			this.update();
+			this.render();
+		}
 	}
+} //End of closure
+
+//Monster for P5.js
+//by Kevin Fredericks August 9, 2020
+//License MIT 
+const monster = ( s ) => {
+	let wobble;
+	let xCenter, yCenter;
+	let leftMargin, rightMargin;
+
+	s.setup = () => {
+		s.createCanvas(200, 200);
+
+		xCenter = s.width / 2;
+		yCenter = s.height / 2; 
+		leftMargin = 50;
+		rightMargin = s.width - 50;
+
+	}
+
+	s.draw = () => {
+		//Keep the tooth from leaving the window
+		let toothX = s.map(
+			s.mouseX, 
+			0, s.width, 
+			leftMargin, rightMargin, 
+			true);
+
+		//Update wobble
+		wobble = getWobble();
+
+		//A nice color
+		s.background(220, 160, 200);
+		
+		//Left Eyeball
+		s.fill(255);
+		s.ellipse(50, 50, 100);
+		
+		//Pupil
+		s.fill(0);
+		s.ellipse(75 + wobble, 75, 25);
+		
+		//Right Eyelid
+		s.fill(220, 160, 200);
+		s.ellipse(s.width-50, 50, 100);
+		
+		//Right sclera
+		s.fill(200, 0, 0);
+		//By assigning wobble to the height, it blinks
+		s.ellipse(s.width-50, 50, 100, wobble*5);
+		
+		//Mouth
+		s.line(0, yCenter, s.width, yCenter);
+		s.fill(0);
+		s.arc(xCenter, yCenter, s.width, s.height/4, 0, s.PI);
+		
+		//Tooth
+		s.fill(255);
+		//args(x, y, width, height, start, stop)
+		s.arc(toothX, yCenter, s.height/8, s.height/8, 0, s.PI);
+		
+		//Trunk (as in nose)
+		for(let i=0; i<10; i++) {
+			let cOffset = i * 3;
+			let offset = i * 5;
+			s.fill(180 + cOffset, 120 + cOffset, 160 + cOffset);
+			s.ellipse(xCenter, yCenter + offset, 80 - offset, 20); 
+		}
+	}
+
+	let getWobble = () => {
+		let time = s.millis();
+		let frequency = 0.003;
+		let amplitude = 3;
+		
+		return s.sin(time * frequency) * amplitude;
+	} 
 } //End of closure
 
 //Load functions in to an object with associated metadata
@@ -380,8 +453,7 @@ const bubbleBufferObj = {
 		difficulty: 'Beginner',
 		description: 'Visualize a bottleneck',
 		tags: ['algorithms, animation, interactive']
-	}
-	,
+	},
 	
 	p5: bubbleBuffer
 }
@@ -392,11 +464,22 @@ const sodaPopObj = {
 		difficulty: 'Intermediate',
 		description: 'Model some bubbles',
 		tags: ['animation, visual art']
-	}
-	,
+	},
 	
 	p5: sodaPop
 }
 
-let sketches = [sandpilesObj, happyMountainsObj, bubbleBufferObj, sodaPopObj, colorTypewriterObj];
+const monsterObj = {
+	metadata : {
+		id: 'monster',
+		title: 'Monster',
+		difficulty: 'Beginner',
+		description: 'Design an abomination',
+		tags: 'animation, visual art'
+	},
+	
+	p5: monster
+}
+
+let sketches = [sandpilesObj, happyMountainsObj, bubbleBufferObj, sodaPopObj, colorTypewriterObj, monsterObj];
 export default sketches;

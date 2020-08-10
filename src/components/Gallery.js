@@ -67,13 +67,13 @@ class SourceCode extends React.Component {
 					this.setState({visible: isVisible})
 				}}
 			>
-				<p 
+				<div 
 					className="SourceCode"
 					style={{
 						transition: 'opacity 500ms linear',
 						opacity: this.state.visible ? 1 : 0
 					}}
-				>{this.props.plaintext}</p>
+				>{this.props.plaintext}</div>
 			</VizSensor>
 		);
 	}
