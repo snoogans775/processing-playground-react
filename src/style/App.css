@@ -1,4 +1,4 @@
-body {
+#root {
 	background-color: #282c34;
 }
 
@@ -16,12 +16,11 @@ body {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(40px, 80px)) 0.4fr;
 	grid-gap: 0.5em;
-	padding: 0.5em;
+	padding: 1em 0;
 	border-bottom: 1px white solid;
 }
 
 .Gallery {
-	padding: 0.4em;
 }
 
 .Card {
@@ -30,7 +29,7 @@ body {
 	grid-template-columns: repeat(2, minmax(0.5fr, 1fr));
 	border-left: 1px #BBBBBB solid;
 	border-bottom: 1px #BBBBBB solid;
-	padding: 0.4em;	
+	padding: 0.6em;	
 }
 
 .SourceCode {
@@ -45,6 +44,8 @@ body {
 }
 
 #title {
+	font-size: 2em;
+	height: 2.5em;
 
 }
 #subtitle {

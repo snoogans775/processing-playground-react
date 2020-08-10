@@ -5,7 +5,7 @@ function NavBar(props) {
         <div className="NavBar">
             <NavButton 
                 title='About'
-                onClick={() => props.onClick('A collection of p5.js sketches')}
+                onClick={() => props.onClick('p5.js sketches for educational use')}
             />
         </div>
     )

@@ -20,12 +20,11 @@ class Header extends React.Component {
         else {
             this.setState({subtitle: null});
         }
-        console.log('i hear you');
     }
     render() {
         return (
             <div className="Header">
-                <div id="title">{this.state.title}</div>
+                <div id="title"><h1>{this.state.title}</h1></div>
                 <div id="subtitle">{this.state.subtitle}</div>
                 <NavBar 
                     onClick={field => this.handleClick(field)}

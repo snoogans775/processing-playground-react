@@ -21,7 +21,7 @@ class Card extends React.Component {
 		super(props);
 		this.state = {
 			metadata: props.sketch.metadata,
-			verbose: false,
+			verbose: true,
 			sketch: props.sketch,
 			sketchText: String(props.sketch.p5)
 		}
@@ -89,7 +89,7 @@ class Sketch extends React.Component {
 		this.myP5 = new p5 (this.sketch.p5, this.myRef.current)
 	}
 	
-	sketch = this.props.source
+	sketch = this.props.source;
 	
 	render() {
 		return (
