@@ -412,6 +412,100 @@ const monster = ( s ) => {
 	} 
 } //End of closure
 
+//Fat Cactus for P5.js
+//by Kevin Fredericks August 11, 2020
+//License MIT 
+let fatCactus = ( s ) => {
+	let girth, centerX, centerY;
+	let sineValue;
+
+	s.setup = () => {
+		s.createCanvas(200, 200);
+		s.noStroke();
+	}
+
+	s.draw = () => {
+		centerX = s.width/2;
+		centerY = s.height/2;
+		
+		//Used to change size of cactus
+		girth = s.constrain(s.mouseX, 0, s.width);
+		//Used to shape curve of spines
+		sineValue = 40;
+		
+		s.background(160, 200, 180);
+		stem(girth);
+		sineSpines(centerX, 30, girth, sineValue);
+		flower(centerX, 25, girth);
+		pot();
+	}
+
+	let stem = (size) => {
+		//Stem
+		s.fill(0, 150, 20);
+		s.ellipse(centerX, centerY, size, 150);
+	}
+
+	let sineSpines = (x, y, girth, sineValue) => {
+		//Spines
+		s.stroke(230);
+		let spread = girth * 0.23;  //magical number
+		let length = 7;
+		let frequency = 1/sineValue;
+		let xStart, yStart, xEnd, yEnd, xOffset; 
+		let dir;
+		let path, rounding;
+		for(let i=8; i<120; i++) {
+			dir = s.sin(i);
+			//xOffset will spread the spines out from the center
+			//It requires a sine based path
+			path = s.cos(i) * spread;
+			//Rounding adds a curve to the path
+			rounding = s.sin(i * frequency) * dir * spread;
+			xOffset = path + rounding;
+			
+			//The aereolae is the origin of the spine cluster
+			xStart = x + (dir * spread) + xOffset;
+			yStart = y + i;
+			
+			//Draw the spines outward from the center of the stem
+			xEnd   = xStart + length * dir;
+			yEnd   = yStart - length;
+			
+			//Draw two spines from the areolae
+			s.line(xStart, yStart, xEnd, yEnd + length);
+			s.line(xStart, yStart, xEnd, yEnd);
+		}
+		s.noStroke();
+	}
+
+	let flower = (centerX, centerY, girth) => {
+		let spread = girth/16;
+		let size = girth/8;
+
+		s.fill(220, 220, 180);
+		s.ellipse(centerX-spread, centerY, size);  //Left
+		s.ellipse(centerX+spread, centerY, size);  //Right
+		s.ellipse(centerX, centerY-spread, size);  //Bottom
+		s.ellipse(centerX, centerY+spread, size);  //Top
+
+	}
+
+	let pot = (x, y) => {
+		s.fill(160, 82, 45);
+		//Rim of the pot
+		s.rect(25, 150, 150, 25);
+		//Base of the pot
+		s.fill(245);
+		s.quad(
+			30, 175,  //Upper-left
+			40, s.height,  //Lower-left
+			160, s.height,  //Lower-right
+			170, 175   //Upper-right
+		);
+	}
+}
+
 //Load functions in to an object with associated metadata
 const colorTypewriterObj = {
 	metadata : {
@@ -481,5 +575,17 @@ const monsterObj = {
 	p5: monster
 }
 
-let sketches = [sandpilesObj, happyMountainsObj, bubbleBufferObj, sodaPopObj, colorTypewriterObj, monsterObj];
+const fatCactusObj = {
+	metadata: {
+		id: 'fatCactus',
+		title: 'Fat Cactus',
+		difficulty: 'Challenging',
+		description: 'Create an interactive plant',
+		tags: 'interactive, algorithms, visual art'
+	},
+	
+	p5: fatCactus
+}
+
+let sketches = [sandpilesObj, monsterObj, happyMountainsObj, fatCactusObj, bubbleBufferObj, sodaPopObj, colorTypewriterObj];
 export default sketches;
