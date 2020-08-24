@@ -23,7 +23,7 @@ class Card extends React.Component {
 			metadata: props.sketch.metadata,
 			verbose: true,
 			sketch: props.sketch,
-			sketchText: String(props.sketch.p5)
+			sketchText: props.sketch.p5.toString()
 		}
 	}
 	

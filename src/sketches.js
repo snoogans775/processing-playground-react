@@ -416,34 +416,43 @@ const monster = ( s ) => {
 //by Kevin Fredericks August 11, 2020
 //License MIT 
 let fatCactus = ( s ) => {
+	//Declare our variables
 	let girth, centerX, centerY;
+	let leftMargin, rightMargin;
+	let cactusHeight;
 	let sineValue;
 
 	s.setup = () => {
 		s.createCanvas(200, 200);
 		s.noStroke();
+
+		//Assign values to our variables
+		centerX = s.width/2;
+		centerY = s.height/2;
+		leftMargin = 20;
+		rightMargin = s.width - 20;
+		cactusHeight = s.height * 0.75;
+
+		//Used to shape curve of spines
+		sineValue = 40;
 	}
 
 	s.draw = () => {
-		centerX = s.width/2;
-		centerY = s.height/2;
 		
 		//Used to change size of cactus
-		girth = s.constrain(s.mouseX, 0, s.width);
-		//Used to shape curve of spines
-		sineValue = 40;
+		girth = s.constrain(s.mouseX, leftMargin, rightMargin);
 		
 		s.background(160, 200, 180);
 		stem(girth);
-		sineSpines(centerX, 30, girth, sineValue);
+		sineSpines(centerX, s.width/10, girth, sineValue);
 		flower(centerX, 25, girth);
 		pot();
 	}
 
-	let stem = (size) => {
+	let stem = (girth) => {
 		//Stem
 		s.fill(0, 150, 20);
-		s.ellipse(centerX, centerY, size, 150);
+		s.ellipse(centerX, centerY, girth, cactusHeight);
 	}
 
 	let sineSpines = (x, y, girth, sineValue) => {
