@@ -14,10 +14,10 @@ const colorTypewriter = ( s ) => {
 	let textX, textY;
 
 	s.setup = () => {
-	  s.createCanvas(200,200);
-	  s.noStroke();
-	  s.colorMode(s.HSB, 100);
-	  s.background(80);
+		s.createCanvas(200,200);
+		s.noStroke();
+		s.colorMode(s.HSB, 100);
+		s.background(80);
 		
 		maxHeight = s.height / 8;
 		minHeight = s.height / 8;
