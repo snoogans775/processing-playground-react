@@ -564,7 +564,7 @@ const sodaPopObj = {
 	metadata: {
 		id: 'sodaPop',
 		title: 'Soda Pop',
-		difficulty: 'Intermediate',
+		difficulty: 'Challenging',
 		description: 'Model some bubbles',
 		tags: ['animation, visual art']
 	},
