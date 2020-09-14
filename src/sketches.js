@@ -515,6 +515,69 @@ let fatCactus = ( s ) => {
 	}
 }
 
+//Wildflower for P5.js
+//by Kevin Fredericks September 11, 2020
+//License MIT 
+let wildflower = ( s ) => {
+function setup() {
+	createCanvas(1000, 1000);
+	background(240, 240, 180);
+	angleMode(DEGREES);
+	colorMode(HSB);
+	frameRate(24);
+	//noLoop();
+	
+	blackRoyalColor = color(20, 220, 220);
+	
+	fill(mouseX, 10, 80);
+	stroke(140, 240, 180);
+	
+	ANGLE_INDEX = 40;
+	sizeDeltaSlider = createSlider(0, 8, 2, 0.01);
+	wobbleSlider = createSlider(-.72, -0.6, -0.6, 0.001);
+	colorSlider = createSlider(0, 10, 5, 0.1);
+  
+	pos = createVector(0, 0);
+	dir = createVector(2, 6.1);
+	angle = 0;
+	centerX = width / 2;
+	centerY = height / 2;
+  
+  }
+  
+  function draw() {
+	translate(width / 2, height / 2);
+	background(240, 240, 20);
+	stroke(blackRoyalColor);
+	fill(mouseX, mouseY, 80);
+	
+	for(let i=0; i<15; i++) {
+	  push();
+	  rotate(24 * i + PI);
+	
+	  for(let j=50; j > 0; j--) {
+		if(i%2 == 0) {
+		  sineValue = sin(pos.x + (i*0.3));
+		} else {
+		  sineValue = cos(pos.x + (i*0.3));
+		}
+		let radius = sineValue * 35;
+		let minifier = map(j, 0, 30, 0, 1.1);
+		pos.set(j * sizeDeltaSlider.value(), j * 3);
+  
+		angle = (noise(pos.y) * 20) + (ANGLE_INDEX + wobbleSlider.value());
+		dir.rotate(angle);
+		pos.add(dir);
+		
+		fill(abs(radius * colorSlider.value()), 60, 90);
+		stroke(abs(radius * sin(frameCount*0.01)*100), 60, 90);
+		ellipse(pos.x, pos.y, radius*minifier, radius*minifier);
+	  }
+	  pop();
+	}
+  }
+}
+
 //Load functions in to an object with associated metadata
 const colorTypewriterObj = {
 	metadata : {
